@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -16,6 +17,9 @@ namespace Mechanics
         [SerializeField] private LayerMask _renderMask;
         [SerializeField] private LayerMask _pictureMask;
 
+        [SerializeField] private GameObject _burnPrefab;
+        [SerializeField] private LayerMask _burnMask;
+
         private Collider2D[] _cached = new Collider2D[32];
 
         public Vector2 LookDirection = Vector2.right;
@@ -25,8 +29,7 @@ namespace Mechanics
         private SpriteRenderer _traceRenderer;
         private Transform _pictureDisplayer;
 
-        private bool _hasProjection;
-        private GameObject _projection; //DEBUG
+        private bool _hasPicture;
         private Transform _grid;
         private Tilemap _ownTileMap;
 
@@ -35,6 +38,8 @@ namespace Mechanics
         public RenderTexture CurrentTexture;
         public RenderTexture CurrentTextureUncut;
         private Camera _renderCamera;
+
+        private Vector2 _expectedPos;
 
         private void Awake()
         {
@@ -77,11 +82,12 @@ namespace Mechanics
             render.color = new Color(1, 1, 1, 0.8f);
             render.material = _pictureDisplayerMat;
 
-            EnableTrace();
+            DisableTrace();
         }
 
         private void Update()
         {
+            _expectedPos = AllignToGrid(RawCameraCenter);
             if (_traceEnabled)
             {
                 _traceRenderer.size = Size;
@@ -97,20 +103,6 @@ namespace Mechanics
                 }
                 _grid.position = _traceRenderer.transform.position + new Vector3(_pictureSize.x % 2 == 0 ? 0f : -0.5f, _pictureSize.y % 2 == 0 ? 0f : -0.5f, 0);
                 _pictureDisplayer.localScale = Size;
-            }
-
-            if (Input.GetKey(KeyCode.Mouse0))
-            {
-                TakePicture();
-            }
-
-            if(Input.GetKey(KeyCode.Mouse1) && _hasProjection)
-            {
-                if(_projection != null)
-                {
-                    Destroy(_projection.gameObject);
-                }
-                _projection = Project(AllignToGrid(RawCameraCenter));
             }
 
             LookDirection = ((Vector2)(Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position)).normalized;
@@ -152,6 +144,34 @@ namespace Mechanics
 
             pictureGo.AddComponent<LocalPictureDisplayer>().Init(CurrentTexture, render);
 
+            List<Vector2> burns = new List<Vector2>();
+
+            Vector2 start = alligned - Size / 2;
+
+            for(int x = 0; x < _pictureSize.x; x++)
+            {
+                for(int y = 0; y < _pictureSize.y; y++)
+                {
+                    Vector2 testPos = new Vector2(x, y) + start;
+
+                    var cast = Physics2D.OverlapCircle(testPos + Vector2.one * 0.5f, 0.5f, _burnMask);
+
+                    if (cast)
+                    {
+                        burns.Add(testPos + Vector2.one * 0.5f);
+                    }
+                }
+            }
+
+
+            for (int i = 0; i < burns.Count; i++)
+            {
+                var go = Instantiate(_burnPrefab);
+                go.name = "BURN";
+                go.transform.SetParent(gridGo.transform, false);
+                go.transform.position = burns[i];
+            }
+
             return gridGo;
         }
 
@@ -182,7 +202,7 @@ namespace Mechanics
                 }
             }
 
-            _hasProjection = true;
+            _hasPicture = true;
 
             Camera target = Camera.main;
             _renderCamera.CopyFrom(target);
@@ -233,15 +253,36 @@ namespace Mechanics
         {
             _traceEnabled = true;
             _traceRenderer.gameObject.SetActive(true);
-            _grid.gameObject.SetActive(true);
-            _prevRendererPosition = AllignToGrid(RawCameraCenter);
+            _traceRenderer.transform.position = _prevRendererPosition = AllignToGrid(RawCameraCenter);
         }
+
+        public void EnableTraceProjection()
+        {
+            _grid.gameObject.SetActive(true);
+            _pictureDisplayer.gameObject.SetActive(true);
+        }
+
+        public void DisableTraceProjection()
+        {
+            _grid.gameObject.SetActive(false);
+            _pictureDisplayer.gameObject.SetActive(false);
+        }
+
 
         public void DisableTrace()
         {
             _traceEnabled = false;
             _traceRenderer.gameObject.SetActive(false);
             _grid.gameObject.SetActive(false);
+            _pictureDisplayer.gameObject.SetActive(false);
+        }
+
+        private void OnDestroy()
+        {
+            if(_renderCamera != null)
+            {
+                Destroy(_renderCamera.gameObject);
+            }
         }
 
         private Vector2 AllignToGrid(Vector2 worldPosition)
@@ -252,6 +293,12 @@ namespace Mechanics
         }
 
         private Vector2 Size => new Vector2(_pictureSize.x, _pictureSize.y);
-        private Vector3 RawCameraCenter => transform.position + new Vector3(LookDirection.x * Size.x / 2, LookDirection.y * Size.y / 2) + (Vector3)LookDirection * _maxOffset;
+        private Vector3 RawCameraCenter => transform.position + new Vector3(LookDirection.x * Size.x / 2, LookDirection.y * Size.y / 2) * LocalOffset + (Vector3)LookDirection * _maxOffset * LocalOffset;
+
+        public SpriteRenderer TraceRenderer => _traceRenderer;
+
+        public float LocalOffset { get; set; } = 1;
+        public bool HasPicture => _hasPicture;
+        public Vector2 ExpectedPos => _expectedPos;
     }
 }

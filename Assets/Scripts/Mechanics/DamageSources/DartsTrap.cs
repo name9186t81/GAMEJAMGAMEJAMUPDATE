@@ -32,7 +32,7 @@ namespace Mechanics
 
                 if (ray)
                 {
-                    if(ray.transform.TryGetComponent<IDamagable>(out var damagable))
+                    if(ray.transform.TryGetComponent<AbstractGameActor>(out var damagable))
                     {
                         damagable.TakeDamage(new DamageArgs()
                         {

@@ -1,4 +1,4 @@
-using Health;
+﻿using Health;
 using Movement;
 using System;
 using System.Collections.Generic;
@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Mechanics
 {
-    public abstract class IDamagable : MonoBehaviour, IDirectionsProvider, ISpeedProvider, Health.IDamagable, IHealth
+    public abstract class AbstractGameActor : MonoBehaviour, IDirectionsProvider, ISpeedProvider, IDamagable, IHealth
     {
         [SerializeField] private int _maxHealth;
         [SerializeField] private float _baseSpeed;
@@ -39,7 +39,7 @@ namespace Mechanics
             var cols = GetAllColliders();
 
             List<ActorCollider> res = new List<ActorCollider>();
-            for(int i = 0; i < cols.Length; i++)
+            for (int i = 0; i < cols.Length; i++)
             {
                 if ((cols[i].SelfType & mask) != 0)
                 {
@@ -54,7 +54,7 @@ namespace Mechanics
         {
             _currentHealth -= args.Damage;
 
-            if(_currentHealth <= 0)
+            if (_currentHealth <= 0)
             {
                 OnDeath?.Invoke(args);
             }

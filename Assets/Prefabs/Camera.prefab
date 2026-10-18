@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1798819947066620251
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6297015721434213071}
+  - component: {fileID: 2516654877155021174}
+  m_Layer: 0
+  m_Name: Camera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6297015721434213071
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1798819947066620251}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2516654877155021174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1798819947066620251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f55dbc1dff1ab3f4483f9a87c7b199da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _traceMoveTime: 0.1
+  _maxOffset: 1
+  _cameraTraceSrite: {fileID: 21300000, guid: 4305d3968f4f2ac47b0055dff3c9e70b, type: 3}
+  _pictureSprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  _pictureDisplayerMat: {fileID: 2100000, guid: e27fd4538ad96424eb9ee606c35f0861, type: 2}
+  _pictureDisplayerProjectionMat: {fileID: 2100000, guid: 5881f9e5a56d86c4683a201074d33be2, type: 2}
+  _pictureSize: {x: 4, y: 3}
+  _renderMask:
+    serializedVersion: 2
+    m_Bits: 119
+  _pictureMask:
+    serializedVersion: 2
+    m_Bits: 119
+  _burnPrefab: {fileID: 2183983908837947494, guid: 7654490bb56e4e04c8555224e2af5771, type: 3}
+  _burnMask:
+    serializedVersion: 2
+    m_Bits: 256
+  LookDirection: {x: 1, y: 0}
+  CurrentTexture: {fileID: 0}
+  CurrentTextureUncut: {fileID: 0}

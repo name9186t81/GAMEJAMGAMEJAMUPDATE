@@ -14,7 +14,7 @@ namespace Mechanics
         }
 
         public Flags SelfType;
-        public IDamagable AttachedActor;
+        public AbstractGameActor AttachedActor;
         public Collider2D Collider;
     }
 }
