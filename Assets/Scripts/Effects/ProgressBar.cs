@@ -5,6 +5,7 @@ namespace Effects
     public sealed class ProgressBar : MonoBehaviour
     {
         [SerializeField] private int _baseOrder;
+        [SerializeField] private float _baseLength;
         [SerializeField] private Sprite _filler;
         [SerializeField] private Sprite _base;
 
@@ -31,10 +32,13 @@ namespace Effects
             _fillerRenderer.drawMode = SpriteDrawMode.Sliced;
 
             UpdateProgress(0);
+            SetLength(_baseLength);
         }
 
         private void UpdateProgress(float val)
         {
+            val = Mathf.Clamp01(val);
+
             float size = val * _baseRenderer.size.x;
             _fillerRenderer.size = new Vector2(size, _baseRenderer.size.y);
             _fillerRenderer.transform.localPosition = new Vector2((1 - val) * -_baseRenderer.size.x / 2, 0);

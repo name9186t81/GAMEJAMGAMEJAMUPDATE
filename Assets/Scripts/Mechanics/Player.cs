@@ -1,5 +1,7 @@
-﻿using Movement;
+﻿using Effects;
+using Movement;
 using NUnit.Framework.Constraints;
+using System;
 using UnityEngine;
 using Utils;
 
@@ -46,6 +48,12 @@ namespace Mechanics
         [Header("Death")]
         [SerializeField] private float _deathTime;
 
+        [Space]
+        [Header("Misc")]
+        [SerializeField] private ProgressBar _bar;
+
+        public event Action<Vector2> OnPictureTaken;
+
         private Collider2D[] _cached = new Collider2D[64];
 
         private Rigidbody2D _rig;
@@ -84,12 +92,16 @@ namespace Mechanics
             _rig.freezeRotation = true;
             _minJumpTime = _jumpHeightMin / _jumpHeight * _jumpTime * 0.5f;
 
+            _camera.OnPictureTaken += (vec) => OnPictureTaken?.Invoke(vec);
+            OnDeath += (_) => _isDying = true;
+        }
+
+        private void Start()
+        {
             if (PlayerEvents.Exists)
             {
                 PlayerEvents.Instance.RegisterPlayer(this);
             }
-
-            OnDeath += (_) => _isDying = true;
         }
 
         private void Update()
@@ -156,6 +168,7 @@ namespace Mechanics
                     _wantCameraCharge = false;
                     _cameraChargeElapsed = 0f;
                     _camera.DisableTrace();
+                    Debug.Log("Picture1");
                 }
                 else
                 {
@@ -174,11 +187,14 @@ namespace Mechanics
                 _camera.EnableTraceProjection();
 
                 _projectorPreview.gameObject.SetActive(true);
+                _bar.gameObject.SetActive(true);
             }
 
             if (_wantProjector)
             {
                 _projectorElapsed += Time.deltaTime;
+                _bar.Progress = _projectorElapsed / _projectorPlaceTime;
+
                 var ray = Physics2D.Raycast(
                     (Vector2)transform.position + _lastNonZeroWalkDirection * new Vector2(-GroundDetector.GravityDirection.y, GroundDetector.GravityDirection.x) * _projectorPlaceOffset,
                     GroundDetector.GravityDirection,
@@ -221,6 +237,7 @@ namespace Mechanics
                     _camera.DisableTrace();
                     _camera.DisableTraceProjection();
                     _projectorPreview.gameObject.SetActive(false);
+                    _bar.gameObject.SetActive(false);
                     _totalProjectors--;
                 }
                 else
@@ -312,7 +329,7 @@ namespace Mechanics
             float dt = _jumpElapsed / _jumpTime;
             _jumpElapsed += timeDelta;
 
-            if (GroundDetector.IsGrounded && _jumpElapsed > 0.3f) //grounded - break jump
+            if ((GroundDetector.IsGrounded || (GroundDetector.Details & GroundDetector.CollisionDetails.TouchingCeiling) != 0) && _jumpElapsed > 0.3f) //grounded - break jump
             {
                 _isJumping = false;
                 _jumpElapsed = 0f;

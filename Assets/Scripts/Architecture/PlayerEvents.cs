@@ -14,7 +14,7 @@ namespace Mechanics
         public void RegisterPlayer(Player player)
         {
             _player = player;
-            player.Camera.OnPictureTaken += ReadPictureEvent;
+            player.OnPictureTaken += ReadPictureEvent;
             player.OnDeath += PlayerDeath;
 
             OnPlayerRegistry?.Invoke(player);
@@ -28,6 +28,7 @@ namespace Mechanics
 
         private void ReadPictureEvent(Vector2 obj)
         {
+            Debug.Log("Picture3");
             OnPictureTaken?.Invoke(obj);
         }
 

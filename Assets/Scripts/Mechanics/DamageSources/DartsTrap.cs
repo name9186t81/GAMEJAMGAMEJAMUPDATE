@@ -28,6 +28,7 @@ namespace Mechanics
             Vector2 projection1 = transform.up * playerPos;
             Vector2 projection2 = transform.up * new Vector2(transform.position.x, transform.position.y);
 
+            Debug.Log(projection1 + " " + projection2 + " " + (projection1 - projection2) + " " + (projection1 - projection2).sqrMagnitude); 
             if ((projection1 - projection2).sqrMagnitude < 1f)
             {
                 var ray = Physics2D.Raycast(transform.position, transform.right, 9999999999, _fireMask);

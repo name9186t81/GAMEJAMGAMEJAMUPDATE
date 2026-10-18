@@ -40,6 +40,8 @@ namespace Mechanics
         private Camera _renderCamera;
 
         private Vector2 _expectedPos;
+        private Vector2 _picturePos;
+        private List<Vector2> _burns = new List<Vector2>();
 
         private void Awake()
         {
@@ -144,32 +146,12 @@ namespace Mechanics
 
             pictureGo.AddComponent<LocalPictureDisplayer>().Init(CurrentTexture, render);
 
-            List<Vector2> burns = new List<Vector2>();
-
-            Vector2 start = alligned - Size / 2;
-
-            for(int x = 0; x < _pictureSize.x; x++)
-            {
-                for(int y = 0; y < _pictureSize.y; y++)
-                {
-                    Vector2 testPos = new Vector2(x, y) + start;
-
-                    var cast = Physics2D.OverlapCircle(testPos + Vector2.one * 0.5f, 0.5f, _burnMask);
-
-                    if (cast)
-                    {
-                        burns.Add(testPos + Vector2.one * 0.5f);
-                    }
-                }
-            }
-
-
-            for (int i = 0; i < burns.Count; i++)
+            for (int i = 0; i < _burns.Count; i++)
             {
                 var go = Instantiate(_burnPrefab);
                 go.name = "BURN";
                 go.transform.SetParent(gridGo.transform, false);
-                go.transform.position = burns[i];
+                go.transform.position = _burns[i] + (alligned - _picturePos);
             }
 
             return gridGo;
@@ -245,6 +227,30 @@ namespace Mechanics
 
             Graphics.CopyTexture(CurrentTextureUncut, 0, 0, rect.x, rect.y, rect.width, rect.height, CurrentTexture, 0, 0, 0, 0);
             Shader.SetGlobalTexture("_CurrentPicture", CurrentTexture);
+
+            Debug.Log("Picture2");
+
+            List<Vector2> burns = new List<Vector2>();
+
+            Vector2 start = newPosition - Size / 2;
+
+            for (int x = 0; x < _pictureSize.x; x++)
+            {
+                for (int y = 0; y < _pictureSize.y; y++)
+                {
+                    Vector2 testPos = new Vector2(x, y) + start;
+
+                    var cast = Physics2D.OverlapCircle(testPos + Vector2.one * 0.5f, 0.5f, _burnMask);
+
+                    if (cast)
+                    {
+                        burns.Add(testPos + Vector2.one * 0.5f);
+                    }
+                }
+            }
+
+            _burns = burns;
+            _picturePos = newPosition;
 
             OnPictureTaken?.Invoke(newPosition);
         }
