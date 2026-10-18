@@ -1,6 +1,7 @@
 ﻿using Health;
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 using Utils;
 
 namespace Mechanics
@@ -8,7 +9,8 @@ namespace Mechanics
     public class DartsTrap : MonoBehaviour
     {
         [SerializeField] private LayerMask _fireMask;
-
+        [SerializeField] private UnityEvent _onFire;
+        
         public event Action<RaycastHit2D> OnFire;
 
         private void Start()
@@ -41,6 +43,7 @@ namespace Mechanics
                     }
 
                     OnFire?.Invoke(ray);
+                    _onFire?.Invoke();
                 }
             }
         }

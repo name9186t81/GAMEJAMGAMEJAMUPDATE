@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using TMPro;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -204,6 +205,7 @@ namespace Architecture
 
                     Vector2 dir = _offsetToCenter ? (new Vector2(width / 2 - x, height / 2 - y)).normalized : new Vector2(Mathf.Cos(_offsetAngle * Mathf.Deg2Rad), Mathf.Sin(_offsetAngle * Mathf.Deg2Rad));
 
+                    int offset = (int)(_maxOffset * pixel.r);
                     List<(int, int)> pixelsList = new List<(int, int)>();
                     HashSet<int> visitedPixels = new HashSet<int>();
                     int i = 0;
@@ -236,6 +238,9 @@ namespace Architecture
                         var nPixel = heightMap.GetPixel(pX, pY);
                         if (nPixel.r >= MIN_HEIGHT)
                         {
+                            var nPixelAlbedo = albedo.GetPixel(pX, pY);
+                            var nPixelNormal = normal.GetPixel(pX, pY);
+
                             for (int j = 0; j < pixelsList.Count; j++)
                             {
                                 int tx = pixelsList[j].Item1;
@@ -245,9 +250,9 @@ namespace Architecture
                                 if (dt <= cachedDts[tx + ty * width]) continue;
                                 cachedDts[tx + ty * width] = dt;
 
-                                var albedoLerp = Color.Lerp(pixelAlbedo, Color.Lerp(pixelAlbedo, _endOffsetColor, _maxEndColorMerge), 1 - dt);
+                                var albedoLerp = Color.Lerp(nPixelAlbedo, Color.Lerp(nPixelAlbedo, _endOffsetColor, _maxEndColorMerge), 1 - dt);
                                 nTexAlbedo.SetPixel(tx, ty, new Color(albedoLerp.r, albedoLerp.g, albedoLerp.b, 1));
-                                nTexNormal.SetPixel(tx, ty, pixelNormal);
+                                nTexNormal.SetPixel(tx, ty, nPixelNormal);
                                 var heightLerp = Color.Lerp(Color.red * nPixel, Color.red * _minHeight * Mathf.InverseLerp(0.6f, 0.9f, nPixel.r), 1 - dt);
                                 nTexHeight.SetPixel(tx, ty, new Color(heightLerp.r, 0, 0, 1));
 
