@@ -63,6 +63,7 @@ MonoBehaviour:
   _maxFlashStrength: 3
   _flashLifetime: 1.2
   _burnPrefab: {fileID: 2183983908837947494, guid: 7654490bb56e4e04c8555224e2af5771, type: 3}
+  _pictureSound: {fileID: 8300000, guid: b22d9aa6164fa5f43a02d34094840dab, type: 3}
   _burnMask:
     serializedVersion: 2
     m_Bits: 256

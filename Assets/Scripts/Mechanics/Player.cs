@@ -22,8 +22,8 @@ namespace Mechanics
 
                 if(dist > MaxDist)
                 {
-                    ArmRenderer1.transform.position = (start + end) * 0.33f;
-                    ArmRenderer2.transform.position = (start + end) * 0.66f;
+                    ArmRenderer1.transform.position = Vector2.Lerp(start, end, 0.33f);
+                    ArmRenderer2.transform.position = Vector2.Lerp(start, end, 0.66f);
 
                     ArmRenderer1.transform.up = ArmRenderer1.transform.up = dir;
                     return;
@@ -123,6 +123,7 @@ namespace Mechanics
         [SerializeField] private ProgressBar _bar;
         [SerializeField] private AudioClip _stepClip;
         [SerializeField] private Sprite _handStart;
+        [SerializeField] private Transform _shoulder;
         [SerializeField] private Sprite _handEnd;
         [SerializeField] private Material _armMat;
         [SerializeField] private SpriteRenderer _cameraRenderer;
@@ -273,7 +274,7 @@ namespace Mechanics
 
             if(Vector2.Distance(transform.position, _lastStepPos) > 3f)
             {
-                AudioController.Instance.PlayAudio(_stepClip, transform.position, 1f, 1f);
+                AudioController.Instance.PlayAudio(_stepClip, transform.position, Mathf.Lerp(0.95f, 1.05f, UnityEngine.Random.value), 1f);
                 _lastStepPos = transform.position;
             }
 
@@ -316,12 +317,25 @@ namespace Mechanics
             {
                 _arms[0].Enable();
                 _arms[1].Enable();
+                _cameraRenderer.gameObject.SetActive(true);
 
                 float fact1 = Mathf.Clamp01(_cameraChargeElapsed / 0.2f);
                 Vector2 mousePos = UnityEngine.Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 float distance = Vector2.Distance(mousePos, transform.position);
 
-                float fact2 = Mathf.Lerp(0.3f, 1f, 1 - Mathf.Clamp01(distance / 15f));
+                float fact2 = Mathf.Lerp(0.3f, 1f, Mathf.Clamp01(distance / 5));
+
+                Vector2 dir = -mousePos.Direction(transform.position) / distance;
+                Vector2 endPoint = (Vector2)transform.position + dir * fact1 * fact2;
+
+                _renderer.flipX = Vector2.Dot(dir, Vector2.left) > 0;
+
+                _arms[0].Update(_shoulder.position, endPoint);
+                _arms[1].Update(_shoulder.position - Vector3.up * 0.07f, endPoint + new Vector2(-dir.y, dir.x) * 0.08f);
+
+                _cameraRenderer.flipY = Vector2.Dot(dir, Vector2.left) > 0;
+                _cameraRenderer.transform.position = endPoint;
+                _cameraRenderer.transform.right = dir;
 
                 if (_isJumping)
                 {
@@ -341,6 +355,13 @@ namespace Mechanics
                 {
                     _camera.TraceRenderer.color = Color.white;
                 }
+            }
+            else
+            {
+                _arms[0].Disable();
+                _arms[1].Disable();
+
+                _cameraRenderer.gameObject.SetActive(false);
             }
 
             if (Input.GetKeyUp(KeyCode.Mouse0) && !landed)

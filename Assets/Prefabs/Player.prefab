@@ -107,7 +107,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5711626793916200948
 Transform:
   m_ObjectHideFlags: 0
@@ -182,6 +182,37 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1 &4349490932697041830
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7179350731918721259}
+  m_Layer: 0
+  m_Name: Shoulder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7179350731918721259
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4349490932697041830}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.215, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5568110377587104914}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5850241716668904766
 GameObject:
   m_ObjectHideFlags: 0
@@ -274,6 +305,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 7179350731918721259}
   - {fileID: 7726709354177878320}
   - {fileID: 5027286613246928786}
   - {fileID: 858871009436719889}
@@ -456,6 +488,7 @@ MonoBehaviour:
   _bar: {fileID: 5026369788846807997}
   _stepClip: {fileID: 8300000, guid: 63e7030ab8383ea4199ed17bef9e1cff, type: 3}
   _handStart: {fileID: 4545277677128322478, guid: d57b58d1a7b531544b94f3fd1d44febe, type: 3}
+  _shoulder: {fileID: 7179350731918721259}
   _handEnd: {fileID: 1159394935, guid: d57b58d1a7b531544b94f3fd1d44febe, type: 3}
   _armMat: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
   _cameraRenderer: {fileID: 6476524356997016495}
@@ -714,6 +747,10 @@ PrefabInstance:
     - target: {fileID: 1798819947066620251, guid: 41792924447d56c4c83542460dc32123, type: 3}
       propertyPath: m_Name
       value: Camera
+      objectReference: {fileID: 0}
+    - target: {fileID: 2516654877155021174, guid: 41792924447d56c4c83542460dc32123, type: 3}
+      propertyPath: _maxOffset
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6297015721434213071, guid: 41792924447d56c4c83542460dc32123, type: 3}
       propertyPath: m_LocalPosition.x

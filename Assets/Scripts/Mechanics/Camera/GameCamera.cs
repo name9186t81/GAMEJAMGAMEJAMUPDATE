@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Audio;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
@@ -24,6 +25,7 @@ namespace Mechanics
         [SerializeField] private float _flashLifetime;
 
         [SerializeField] private GameObject _burnPrefab;
+        [SerializeField] private AudioClip _pictureSound;
         [SerializeField] private LayerMask _burnMask;
 
         private Collider2D[] _cached = new Collider2D[32];
@@ -119,8 +121,11 @@ namespace Mechanics
                 _pictureDisplayer.localScale = Size;
             }
 
-            if(!_overrideControl)
+            if (!_overrideControl)
+            {
                 LookDirection = ((Vector2)(Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position)).normalized;
+                LocalOffset = Mathf.Clamp01(Vector2.Distance(UnityEngine.Camera.main.ScreenToWorldPoint(Input.mousePosition), transform.position) / 5f);
+            }
 
             if(_flashElapsed > 0f)
             {
@@ -293,6 +298,7 @@ namespace Mechanics
             _burns = burns;
             _picturePos = newPosition;
 
+            AudioController.Instance.PlayAudio(_pictureSound, transform.position, 1f, 1f);
             OnPictureTaken?.Invoke(newPosition);
         }
 

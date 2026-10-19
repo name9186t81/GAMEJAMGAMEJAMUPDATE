@@ -1,4 +1,5 @@
-﻿using Health;
+﻿using Audio;
+using Health;
 using System;
 using UnityEngine;
 using UnityEngine.Events;
@@ -10,6 +11,7 @@ namespace Mechanics
     {
         [SerializeField] private LayerMask _fireMask;
         [SerializeField] private UnityEvent _onFire;
+        [SerializeField] private AudioClip _shootSound;
         
         public event Action<RaycastHit2D> OnFire;
 
@@ -42,10 +44,11 @@ namespace Mechanics
                             Damage = 1
                         });
                     }
-
-                    OnFire?.Invoke(ray);
-                    _onFire?.Invoke();
                 }
+
+                AudioController.Instance.PlayAudio(_shootSound, transform.position, 1f, 1f);
+                OnFire?.Invoke(ray);
+                _onFire?.Invoke();
             }
         }
     }
