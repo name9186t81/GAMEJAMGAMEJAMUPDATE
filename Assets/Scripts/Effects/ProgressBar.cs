@@ -8,6 +8,7 @@ namespace Effects
         [SerializeField] private float _baseLength;
         [SerializeField] private Sprite _filler;
         [SerializeField] private Sprite _base;
+        [SerializeField] private Material _mat;
 
         private float _progress;
         private SpriteRenderer _baseRenderer;
@@ -25,11 +26,13 @@ namespace Effects
             _baseRenderer.sprite = _base;
             _baseRenderer.sortingOrder = _baseOrder;
             _baseRenderer.drawMode = SpriteDrawMode.Sliced;
+            if (_mat) _baseRenderer.material = _mat;
 
             _fillerRenderer = go2.AddComponent<SpriteRenderer>();
             _fillerRenderer.sprite = _filler;
             _fillerRenderer.sortingOrder = _baseOrder - 1;
             _fillerRenderer.drawMode = SpriteDrawMode.Sliced;
+            if(_mat) _fillerRenderer.material = _mat;
 
             UpdateProgress(0);
             SetLength(_baseLength);

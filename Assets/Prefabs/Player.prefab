@@ -139,6 +139,7 @@ MonoBehaviour:
   _baseLength: 3
   _filler: {fileID: 8080888739575563908, guid: 31def049ac925214a999798b64b5817a, type: 3}
   _base: {fileID: 6026151842308396209, guid: c2cfa7aebb87df54382ebc07762bef79, type: 3}
+  _mat: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
 --- !u!1 &7489795482455157391
 GameObject:
   m_ObjectHideFlags: 0
@@ -312,7 +313,7 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.10685537
+      time: 0.20242879
       value: 0.000059871934
       inSlope: 0
       outSlope: 0

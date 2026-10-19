@@ -142,6 +142,9 @@ MonoBehaviour:
   _idleAnimation: {fileID: 2643862052005972471}
   _spawnAnimation: {fileID: 361379060613970235}
   _spawnDelay: 0.5
+  _idleClip: {fileID: 8300000, guid: 076861f23893fcb48a912e1cb9a64dad, type: 3}
+  _placeClip: {fileID: 8300000, guid: e1d75eb26dd857148937c6f9d7e59f97, type: 3}
+  _takingClip: {fileID: 8300000, guid: 14f46a1a611f73342a9d83d84cab005e, type: 3}
 --- !u!61 &6739848515090430048
 BoxCollider2D:
   m_ObjectHideFlags: 0

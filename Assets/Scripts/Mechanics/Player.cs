@@ -130,7 +130,7 @@ namespace Mechanics
         {
             if(GroundDetector.TimeSinceGrounded > 0.5f)
             {
-                _landingCooldown = 0.5f;
+                _landingCooldown = 0.6f;
             }
         }
 
@@ -290,7 +290,7 @@ namespace Mechanics
                 {
                     var projector = Instantiate(_projectorPrefab);
                     projector.transform.position = ray.point;
-                    projector.Project(_camera.ExpectedPos, _camera);
+                    projector.Project(_camera.ExpectedPos, _camera, _lastNonZeroWalkDirection < 0);
 
                     _wantProjector = false;
                     _projectorElapsed = 0f;
