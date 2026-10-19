@@ -10,6 +10,50 @@ namespace Mechanics
     [RequireComponent(typeof(Rigidbody2D))]
     public sealed class Player : AbstractGameActor, IReactToPicture
     {
+        private class Arm
+        {
+            public SpriteRenderer ArmRenderer1;
+            public SpriteRenderer ArmRenderer2;
+            public float MaxDist;
+
+            public void Update(Vector2 start, Vector2 end)
+            {
+                var dir = start.DirectionNormalized(end, out float dist);
+
+                if(dist > MaxDist)
+                {
+                    ArmRenderer1.transform.position = (start + end) * 0.33f;
+                    ArmRenderer2.transform.position = (start + end) * 0.66f;
+
+                    ArmRenderer1.transform.up = ArmRenderer1.transform.up = dir;
+                    return;
+                }
+                Vector2 perp1 = new Vector2(-dir.y, dir.x);
+
+                if (Vector2.Dot(perp1, Vector2.down) < 0) perp1 *= -1;
+
+                float diff = MaxDist - dist;
+                Vector2 pos = (start + end) * 0.5f + perp1 * diff;
+
+                ArmRenderer1.transform.position = (pos + start) * 0.5f;
+                ArmRenderer2.transform.position = (pos + end) * 0.5f;
+
+                ArmRenderer1.transform.up = start.Direction(pos);
+                ArmRenderer2.transform.up = pos.Direction(end);
+            }
+
+            public void Disable()
+            {
+                ArmRenderer1.gameObject.SetActive(false);
+                ArmRenderer2.gameObject.SetActive(false);
+            }
+            public void Enable()
+            {
+                ArmRenderer1.gameObject.SetActive(true);
+                ArmRenderer2.gameObject.SetActive(true);
+            }
+        }
+
         private enum State
         {
             Walking,
@@ -78,6 +122,10 @@ namespace Mechanics
         
         [SerializeField] private ProgressBar _bar;
         [SerializeField] private AudioClip _stepClip;
+        [SerializeField] private Sprite _handStart;
+        [SerializeField] private Sprite _handEnd;
+        [SerializeField] private Material _armMat;
+        [SerializeField] private SpriteRenderer _cameraRenderer;
 
         public event Action<Vector2> OnPictureTaken;
 
@@ -118,6 +166,8 @@ namespace Mechanics
         private State _state;
         private SpriteAnimation _currentAnimation;
 
+        private Arm[] _arms;
+
         protected override void Init()
         {
             _totalProjectors = _initialProjectors;
@@ -143,6 +193,42 @@ namespace Mechanics
             GroundDetector.OnLanding += Landed;
             _camera.OnPictureTaken += (vec) => OnPictureTaken?.Invoke(vec);
             OnDeath += (_) => _isDying = true;
+
+            Arm mainArm = InitArm();
+            mainArm.ArmRenderer1.sortingOrder = mainArm.ArmRenderer2.sortingOrder = _renderer.sortingOrder + 1;
+
+            Arm second = InitArm();
+            second.ArmRenderer1.sortingOrder = second.ArmRenderer2.sortingOrder = _renderer.sortingOrder - 1;
+            second.ArmRenderer1.color = second.ArmRenderer2.color = new Color(0.8f, 0.8f, 0.8f, 1);
+
+            _arms = new Arm[2];
+            _arms[0] = mainArm;
+            _arms[1] = second;
+        }
+
+        private Arm InitArm()
+        {
+            var renderer1 = new GameObject("ARM_RENDERER1");
+            renderer1.transform.SetParent(transform, false);
+
+            var sr = renderer1.AddComponent<SpriteRenderer>();
+            sr.sprite = _handStart;
+            sr.material = _armMat;
+
+            var renderer2 = new GameObject("ARM_RENDERER2");
+            renderer2.transform.SetParent(transform, false);
+
+            var sr2 = renderer2.AddComponent<SpriteRenderer>();
+            sr2.sprite = _handEnd;
+            sr2.material = _armMat;
+
+            Arm arm = new Arm()
+            {
+                ArmRenderer1 = sr,
+                ArmRenderer2 = sr2,
+                MaxDist = 1
+            };
+            return arm;
         }
 
         private void Landed()
@@ -228,6 +314,15 @@ namespace Mechanics
 
             if (_wantCameraCharge)
             {
+                _arms[0].Enable();
+                _arms[1].Enable();
+
+                float fact1 = Mathf.Clamp01(_cameraChargeElapsed / 0.2f);
+                Vector2 mousePos = UnityEngine.Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                float distance = Vector2.Distance(mousePos, transform.position);
+
+                float fact2 = Mathf.Lerp(0.3f, 1f, 1 - Mathf.Clamp01(distance / 15f));
+
                 if (_isJumping)
                 {
                     _wantCameraCharge = false;
