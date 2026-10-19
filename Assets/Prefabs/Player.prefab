@@ -362,6 +362,7 @@ MonoBehaviour:
   _cameraAnimation: {fileID: 1764724036195850303}
   _placeProjectorAnimation: {fileID: 1865795168608231508}
   _bar: {fileID: 5026369788846807997}
+  _stepClip: {fileID: 8300000, guid: 63e7030ab8383ea4199ed17bef9e1cff, type: 3}
 --- !u!114 &4156916511010642708
 MonoBehaviour:
   m_ObjectHideFlags: 0

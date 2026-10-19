@@ -139,6 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2fd7641343ec4545b7317c5c4ffa192, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Mechanics.CameraProjector
+  _renderer: {fileID: 5853078546123908626}
   _idleAnimation: {fileID: 2643862052005972471}
   _spawnAnimation: {fileID: 361379060613970235}
   _spawnDelay: 0.5

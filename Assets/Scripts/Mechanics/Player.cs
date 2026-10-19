@@ -1,4 +1,5 @@
-﻿using Effects;
+﻿using Audio;
+using Effects;
 using Movement;
 using System;
 using UnityEngine;
@@ -76,6 +77,7 @@ namespace Mechanics
         [SerializeField] private SpriteAnimation _placeProjectorAnimation;
         
         [SerializeField] private ProgressBar _bar;
+        [SerializeField] private AudioClip _stepClip;
 
         public event Action<Vector2> OnPictureTaken;
 
@@ -88,6 +90,8 @@ namespace Mechanics
         private float _lastNonZeroWalkDirection = 1;
         private float _walkDirection;
         private Vector2 _walkForce;
+
+        private Vector2 _lastStepPos;
 
         private float _jumpElapsed;
         private float _minJumpTime;
@@ -121,6 +125,21 @@ namespace Mechanics
             _rig.freezeRotation = true;
             _minJumpTime = _jumpHeightMin / _jumpHeight * _jumpTime * 0.5f;
 
+            float bestMatch = 0f;
+            float bestVal = 999;
+            for(int i = 0; i < 500; i++)
+            {
+                float dt = (float)i / 1000;
+                float val = _jumpCurve.Evaluate(dt);
+
+                if(Mathf.Abs(val - _jumpHeightMin / _jumpHeight) < bestVal)
+                {
+                    bestVal = Mathf.Abs(val - _jumpHeightMin / _jumpHeight);
+                    bestMatch = dt;
+                }
+            }
+
+            _minJumpTime = bestMatch * _jumpTime;
             GroundDetector.OnLanding += Landed;
             _camera.OnPictureTaken += (vec) => OnPictureTaken?.Invoke(vec);
             OnDeath += (_) => _isDying = true;
@@ -163,6 +182,18 @@ namespace Mechanics
             if (landed)
             {
                 _walkDirection = 0f;
+                _lastStepPos = transform.position;
+            }
+
+            if(Vector2.Distance(transform.position, _lastStepPos) > 3f)
+            {
+                AudioController.Instance.PlayAudio(_stepClip, transform.position, 1f, 1f);
+                _lastStepPos = transform.position;
+            }
+
+            if (_isJumping)
+            {
+                _lastStepPos = transform.position;
             }
 
             if(_walkDirection != 0)
@@ -236,7 +267,7 @@ namespace Mechanics
             }
 
             wanted = _wantProjector;
-            _wantProjector = Input.GetKey(KeyCode.Mouse1) && !_isJumping && !_wantCameraCharge && _camera.HasPicture && !landed;
+            _wantProjector = Input.GetKey(KeyCode.Mouse1) && !_isJumping && !_wantCameraCharge && _camera.HasPicture && !landed && _totalProjectors > 0;
 
             if (!wanted && _wantProjector)
             {
@@ -278,7 +309,7 @@ namespace Mechanics
                 _projectorPreview.color = Color.red;
             }
 
-            if (Input.GetKeyUp(KeyCode.Mouse1) && !landed)
+            if (Input.GetKeyUp(KeyCode.Mouse1) && !landed || _projectorElapsed > _projectorPlaceTime)
             {
                 var ray = Physics2D.Raycast(
                     (Vector2)transform.position + _lastNonZeroWalkDirection * new Vector2(-GroundDetector.GravityDirection.y, GroundDetector.GravityDirection.x) * _projectorPlaceOffset, 
