@@ -284,7 +284,7 @@ namespace Architecture
             Texture2D nTexAlbedo = new Texture2D(albedo.width, albedo.height);
             Texture2D nTexNormal = new Texture2D(albedo.width, albedo.height);
             Texture2D nTexHeight = new Texture2D(albedo.width, albedo.height);
-            const float MIN_HEIGHT = 0.6f;
+            const float MIN_HEIGHT = 0.86f;
             for (int x = 0; x < width; x++)
             {
                 for (int y = 0; y < height; y++)
@@ -329,7 +329,7 @@ namespace Architecture
                         if (pX < 0 || pX >= width || pY < 0 || pY >= height) break;
 
                         var nPixel = heightMap.GetPixel(pX, pY);
-                        const float THRESHOLD = 0.11f;
+                        const float THRESHOLD = 0.04f;
                         if((nPixel.r - pixel.r) > THRESHOLD && !ignoredForHeightCheck.Contains(pX + pY * width))
                         {
                             var nPixelAlbedo = albedo.GetPixel(pX, pY);

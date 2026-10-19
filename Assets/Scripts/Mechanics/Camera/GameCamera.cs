@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.Tilemaps;
 
 namespace Mechanics
@@ -10,6 +11,7 @@ namespace Mechanics
         [SerializeField] private float _traceMoveTime;
         [SerializeField] private float _maxOffset;
         [SerializeField] private Sprite _cameraTraceSrite;
+        [SerializeField] private Material _cameraTracerMat;
         [SerializeField] private Sprite _pictureSprite;
         [SerializeField] private Material _pictureDisplayerMat;
         [SerializeField] private Material _pictureDisplayerProjectionMat;
@@ -17,10 +19,17 @@ namespace Mechanics
         [SerializeField] private LayerMask _renderMask;
         [SerializeField] private LayerMask _pictureMask;
 
+        [SerializeField] private Light2D _cameraFlash;
+        [SerializeField] private float _maxFlashStrength;
+        [SerializeField] private float _flashLifetime;
+
         [SerializeField] private GameObject _burnPrefab;
         [SerializeField] private LayerMask _burnMask;
 
         private Collider2D[] _cached = new Collider2D[32];
+
+        private Vector2 _flashPos;
+        private float _flashElapsed;
 
         public Vector2 LookDirection = Vector2.right;
         private float _traceElapsed;
@@ -29,11 +38,13 @@ namespace Mechanics
         private SpriteRenderer _traceRenderer;
         private Transform _pictureDisplayer;
 
+        private bool _overrideControl;
         private bool _hasPicture;
         private Transform _grid;
         private Tilemap _ownTileMap;
 
         public event Action<Vector2> OnPictureTaken;
+        public event Action<Vector2> OnPicturePreTaken;
 
         public RenderTexture CurrentTexture;
         public RenderTexture CurrentTextureUncut;
@@ -52,6 +63,7 @@ namespace Mechanics
             _traceRenderer.size = Size;
             _traceRenderer.sortingOrder = 1000;
             _traceRenderer.sprite = _cameraTraceSrite;
+            if(_cameraTracerMat) _traceRenderer.material = _cameraTracerMat;
             go1.transform.SetParent(transform, false);
 
             var gridGo = new GameObject("CameraGrid");
@@ -107,12 +119,30 @@ namespace Mechanics
                 _pictureDisplayer.localScale = Size;
             }
 
-            LookDirection = ((Vector2)(Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position)).normalized;
+            if(!_overrideControl)
+                LookDirection = ((Vector2)(Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position)).normalized;
+
+            if(_flashElapsed > 0f)
+            {
+                _flashElapsed -= Time.deltaTime;
+                _cameraFlash.intensity = _flashElapsed / _flashLifetime * _maxFlashStrength;
+                _cameraFlash.transform.position = _flashPos;
+
+                if(_flashElapsed < 0f)
+                {
+                    _cameraFlash.gameObject.SetActive(false);
+                }
+            }
         }
 
         public GameObject Project(Vector2 worldPosition)
         {
             Vector2 alligned = AllignToGrid(worldPosition) + new Vector2(_pictureSize.x % 2 == 0 ? 0f : -0.5f, _pictureSize.y % 2 == 0 ? 0f : -0.5f);
+
+            if(worldPosition.y > 0)
+            {
+                alligned += Vector2.up;
+            }
 
             var gridGo = new GameObject("PROJECTION");
             gridGo.AddComponent<Grid>().cellSize = Vector3.one;
@@ -130,7 +160,7 @@ namespace Mechanics
             tilemap.SetTilesBlock(bounds, tiles);
             tilemap.RefreshAllTiles();
 
-            tilemap.gameObject.AddComponent<TilemapRenderer>();
+            tilemap.gameObject.AddComponent<TilemapRenderer>().sortingOrder = -6;
             tilemap.gameObject.AddComponent<TilemapCollider2D>().ProcessTilemapChanges();
 
             var pictureGo = new GameObject("PICTURE_DISPLAYER");
@@ -145,6 +175,11 @@ namespace Mechanics
             render.color = Color.yellow;
 
             pictureGo.AddComponent<LocalPictureDisplayer>().Init(CurrentTexture, render);
+
+            if(worldPosition.y > 0)
+            {
+                alligned += Vector2.up * 0.5f;
+            }
 
             for (int i = 0; i < _burns.Count; i++)
             {
@@ -162,11 +197,19 @@ namespace Mechanics
             var newPosition = AllignToGrid(RawCameraCenter);
             var overlap = Physics2D.OverlapArea(newPosition + Size / 2, newPosition - Size / 2, new ContactFilter2D() { layerMask = _pictureMask }, _cached);
 
-            for(int i = 0; i < overlap; i++)
+            _flashPos = newPosition;
+            _flashElapsed = _flashLifetime;
+            _cameraFlash.gameObject.SetActive(true);
+            _cameraFlash.transform.position = _flashPos;
+            _cameraFlash.intensity = _maxFlashStrength;
+
+            OnPicturePreTaken?.Invoke(newPosition);
+
+            for (int i = 0; i < overlap; i++)
             {
                 if (_cached[i].gameObject.TryGetComponent<IReactToPicture>(out var comp))
                 {
-                    comp.ReactToPicture(transform.position);
+                    comp.ReactToPicture(transform.position, this);
                 }
 
                 if (_cached[i].gameObject.TryGetComponent<Tilemap>(out var tilemap))
@@ -227,8 +270,6 @@ namespace Mechanics
 
             Graphics.CopyTexture(CurrentTextureUncut, 0, 0, rect.x, rect.y, rect.width, rect.height, CurrentTexture, 0, 0, 0, 0);
             Shader.SetGlobalTexture("_CurrentPicture", CurrentTexture);
-
-            Debug.Log("Picture2");
 
             List<Vector2> burns = new List<Vector2>();
 
@@ -305,6 +346,7 @@ namespace Mechanics
 
         public float LocalOffset { get; set; } = 1;
         public bool HasPicture => _hasPicture;
+        public bool OverrideControl { get => _overrideControl; set => _overrideControl = value; }
         public Vector2 ExpectedPos => _expectedPos;
     }
 }

@@ -301,7 +301,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -339,7 +339,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -373,19 +373,32 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: man-atlas_0
+      name: idle
       rect:
         serializedVersion: 2
-        x: 9
-        y: 351
-        width: 13
+        x: 0
+        y: 352
+        width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -399,37 +412,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: man-atlas_1
+      name: Prejump
       rect:
         serializedVersion: 2
-        x: 73
-        y: 365
-        width: 8
-        height: 8
+        x: 0
+        y: 320
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 3dd7743cae730c240800000000000000
-      internalID: 4809905883469807059
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: man-atlas_2
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 365
-        width: 6
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -443,15 +434,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: man-atlas_3
+      name: Prejump1
       rect:
         serializedVersion: 2
-        x: 85
-        y: 365
-        width: 6
-        height: 8
+        x: 32
+        y: 320
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -465,15 +456,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: man-atlas_4
+      name: Prejump2
       rect:
         serializedVersion: 2
-        x: 7
-        y: 319
-        width: 17
-        height: 24
+        x: 64
+        y: 320
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -487,59 +478,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: man-atlas_5
+      name: Ascending
       rect:
         serializedVersion: 2
-        x: 38
-        y: 319
-        width: 18
-        height: 22
+        x: 0
+        y: 288
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: cb40b418185da2bc0800000000000000
-      internalID: -3806995782791658308
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: man-atlas_6
-      rect:
-        serializedVersion: 2
-        x: 72
-        y: 319
-        width: 15
-        height: 26
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a220c15190dbad2d0800000000000000
-      internalID: -3253079934115249622
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: man-atlas_7
-      rect:
-        serializedVersion: 2
-        x: 109
-        y: 330
-        width: 6
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -556,12 +503,12 @@ TextureImporter:
       name: man-atlas_8
       rect:
         serializedVersion: 2
-        x: 114
-        y: 330
-        width: 6
-        height: 8
+        x: 32
+        y: 288
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -575,59 +522,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: man-atlas_9
+      name: Peak
       rect:
         serializedVersion: 2
-        x: 119
-        y: 330
-        width: 9
-        height: 8
+        x: 0
+        y: 256
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 3261248482c158de0800000000000000
-      internalID: -1331627155481553373
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: man-atlas_10
-      rect:
-        serializedVersion: 2
-        x: 127
-        y: 330
-        width: 6
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: aac308b7879b6bf20800000000000000
-      internalID: 3438139292663168170
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: man-atlas_11
-      rect:
-        serializedVersion: 2
-        x: 132
-        y: 330
-        width: 7
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -641,15 +544,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: man-atlas_12
+      name: Peak1
       rect:
         serializedVersion: 2
-        x: 138
-        y: 330
-        width: 6
-        height: 8
+        x: 32
+        y: 256
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -663,15 +566,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: man-atlas_13
+      name: Peak2
       rect:
         serializedVersion: 2
-        x: 9
-        y: 287
-        width: 13
-        height: 33
+        x: 64
+        y: 256
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -685,81 +588,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: man-atlas_14
+      name: Fall
       rect:
         serializedVersion: 2
-        x: 41
-        y: 287
-        width: 13
-        height: 33
+        x: 0
+        y: 224
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 55ae575ae43393c90800000000000000
-      internalID: -7189658917243852203
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: man-atlas_15
-      rect:
-        serializedVersion: 2
-        x: 102
-        y: 293
-        width: 6
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e36a110244b296120800000000000000
-      internalID: 2407503047402038846
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: man-atlas_16
-      rect:
-        serializedVersion: 2
-        x: 107
-        y: 293
-        width: 6
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c44dfdd8e933b4d60800000000000000
-      internalID: 7875445129465549900
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: man-atlas_17
-      rect:
-        serializedVersion: 2
-        x: 112
-        y: 293
-        width: 6
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -773,15 +610,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: man-atlas_18
+      name: Fall2
       rect:
         serializedVersion: 2
-        x: 117
-        y: 293
-        width: 6
-        height: 8
+        x: 32
+        y: 224
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -795,59 +632,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: man-atlas_19
+      name: Land
       rect:
         serializedVersion: 2
-        x: 122
-        y: 293
-        width: 6
-        height: 8
+        x: 0
+        y: 192
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5e8923625f1fb0f80800000000000000
-      internalID: -8139145866331907867
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: man-atlas_20
-      rect:
-        serializedVersion: 2
-        x: 127
-        y: 293
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b06c5d5ebe3552a60800000000000000
-      internalID: 7648611814797067787
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: man-atlas_21
-      rect:
-        serializedVersion: 2
-        x: 134
-        y: 293
-        width: 6
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -861,15 +654,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: man-atlas_22
+      name: Land1
       rect:
         serializedVersion: 2
-        x: 139
-        y: 293
-        width: 6
-        height: 8
+        x: 32
+        y: 192
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -883,15 +676,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: man-atlas_23
+      name: Land2
       rect:
         serializedVersion: 2
-        x: 8
-        y: 256
-        width: 15
-        height: 30
+        x: 64
+        y: 192
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -905,15 +698,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: man-atlas_24
+      name: Land3
       rect:
         serializedVersion: 2
-        x: 40
-        y: 258
-        width: 15
-        height: 28
+        x: 96
+        y: 192
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -927,15 +720,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: man-atlas_25
+      name: Land4
       rect:
         serializedVersion: 2
-        x: 71
-        y: 261
-        width: 17
-        height: 25
+        x: 128
+        y: 192
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -949,37 +742,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: man-atlas_26
+      name: Place1
       rect:
         serializedVersion: 2
-        x: 102
-        y: 274
-        width: 6
-        height: 8
+        x: 0
+        y: 160
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7df04f52b5ba605c0800000000000000
-      internalID: -4249520790410358825
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: man-atlas_27
-      rect:
-        serializedVersion: 2
-        x: 107
-        y: 274
-        width: 6
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -993,15 +764,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: man-atlas_28
+      name: Place2
       rect:
         serializedVersion: 2
-        x: 112
-        y: 274
-        width: 6
-        height: 8
+        x: 32
+        y: 160
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1015,15 +786,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: man-atlas_29
+      name: Place3
       rect:
         serializedVersion: 2
-        x: 117
-        y: 274
-        width: 6
-        height: 8
+        x: 64
+        y: 160
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1037,15 +808,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: man-atlas_30
+      name: Place4
       rect:
         serializedVersion: 2
-        x: 122
-        y: 274
-        width: 8
-        height: 8
+        x: 96
+        y: 160
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1059,15 +830,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: man-atlas_31
+      name: Place5
       rect:
         serializedVersion: 2
-        x: 129
-        y: 274
-        width: 6
-        height: 8
+        x: 128
+        y: 160
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1081,15 +852,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: man-atlas_32
+      name: Place6
       rect:
         serializedVersion: 2
-        x: 134
-        y: 274
-        width: 6
-        height: 8
+        x: 160
+        y: 160
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1103,15 +874,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: man-atlas_33
+      name: Place7
       rect:
         serializedVersion: 2
-        x: 143
-        y: 274
-        width: 7
-        height: 8
+        x: 192
+        y: 160
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1125,15 +896,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: man-atlas_34
+      name: Walk
       rect:
         serializedVersion: 2
-        x: 153
-        y: 274
-        width: 7
-        height: 8
+        x: 0
+        y: 128
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1147,15 +918,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: man-atlas_35
+      name: Walk1
       rect:
         serializedVersion: 2
-        x: 159
-        y: 274
-        width: 6
-        height: 8
+        x: 32
+        y: 128
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1169,15 +940,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: man-atlas_36
+      name: Walk2
       rect:
         serializedVersion: 2
-        x: 164
-        y: 274
-        width: 6
-        height: 8
+        x: 64
+        y: 128
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1191,15 +962,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: man-atlas_37
+      name: Walk3
       rect:
         serializedVersion: 2
-        x: 117
-        y: 264
-        width: 9
-        height: 8
+        x: 96
+        y: 128
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1213,15 +984,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: man-atlas_38
+      name: InDoor
       rect:
         serializedVersion: 2
-        x: 125
-        y: 264
-        width: 7
-        height: 8
+        x: 0
+        y: 96
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1235,15 +1006,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: man-atlas_39
+      name: InDoor1
       rect:
         serializedVersion: 2
-        x: 131
-        y: 264
-        width: 6
-        height: 8
+        x: 32
+        y: 96
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1257,15 +1028,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: man-atlas_40
+      name: InDoor2
       rect:
         serializedVersion: 2
-        x: 140
-        y: 264
-        width: 6
-        height: 8
+        x: 64
+        y: 96
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1279,15 +1050,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: man-atlas_41
+      name: InDoor3
       rect:
         serializedVersion: 2
-        x: 145
-        y: 264
-        width: 6
-        height: 8
+        x: 96
+        y: 96
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1301,15 +1072,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: man-atlas_42
+      name: InDoor4
       rect:
         serializedVersion: 2
-        x: 150
-        y: 264
-        width: 6
-        height: 8
+        x: 128
+        y: 96
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1323,15 +1094,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: man-atlas_43
+      name: InDoor5
       rect:
         serializedVersion: 2
-        x: 155
-        y: 264
-        width: 6
-        height: 8
+        x: 160
+        y: 96
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1345,15 +1116,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: man-atlas_44
+      name: CameraHold
       rect:
         serializedVersion: 2
-        x: 7
-        y: 230
-        width: 17
-        height: 24
+        x: 0
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1367,15 +1138,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: man-atlas_45
+      name: CameraHold1
       rect:
         serializedVersion: 2
-        x: 39
-        y: 230
-        width: 17
-        height: 24
+        x: 32
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1392,12 +1163,12 @@ TextureImporter:
       name: man-atlas_46
       rect:
         serializedVersion: 2
-        x: 83
-        y: 241
-        width: 6
-        height: 8
+        x: 0
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1414,12 +1185,12 @@ TextureImporter:
       name: man-atlas_47
       rect:
         serializedVersion: 2
-        x: 88
-        y: 241
-        width: 6
-        height: 8
+        x: 32
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1436,12 +1207,12 @@ TextureImporter:
       name: man-atlas_48
       rect:
         serializedVersion: 2
-        x: 93
-        y: 241
-        width: 6
-        height: 8
+        x: 64
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1458,12 +1229,12 @@ TextureImporter:
       name: man-atlas_49
       rect:
         serializedVersion: 2
-        x: 98
-        y: 241
-        width: 6
-        height: 8
+        x: 96
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1477,15 +1248,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: man-atlas_50
+      name: Camera
       rect:
         serializedVersion: 2
-        x: 7
-        y: 191
-        width: 17
-        height: 27
+        x: 128
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1499,15 +1270,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: man-atlas_51
+      name: Hand1
       rect:
         serializedVersion: 2
-        x: 136
-        y: 191
-        width: 15
-        height: 26
+        x: 170
+        y: 53
+        width: 2
+        height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1521,15 +1292,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: man-atlas_52
+      name: Projector1
       rect:
         serializedVersion: 2
-        x: 165
-        y: 217
-        width: 6
-        height: 8
+        x: 0
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1543,15 +1314,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: man-atlas_53
+      name: Projector2
       rect:
         serializedVersion: 2
-        x: 170
-        y: 217
-        width: 6
-        height: 8
+        x: 32
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1565,15 +1336,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: man-atlas_54
+      name: Projector3
       rect:
         serializedVersion: 2
-        x: 175
-        y: 217
-        width: 6
-        height: 8
+        x: 64
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1587,15 +1358,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: man-atlas_55
+      name: Projector4
       rect:
         serializedVersion: 2
-        x: 180
-        y: 217
-        width: 6
-        height: 8
+        x: 96
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1609,727 +1380,23 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: man-atlas_56
+      name: Hand2
       rect:
         serializedVersion: 2
-        x: 39
-        y: 191
-        width: 17
-        height: 24
+        x: 176
+        y: 53
+        width: 2
+        height: 8
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: d1057ba68e45c8370800000000000000
-      internalID: 8326123168300748829
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: man-atlas_57
-      rect:
-        serializedVersion: 2
-        x: 71
-        y: 191
-        width: 17
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 3fc9261dd9a7b0eb0800000000000000
-      internalID: -4752570163518071565
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: man-atlas_58
-      rect:
-        serializedVersion: 2
-        x: 102
-        y: 191
-        width: 18
-        height: 22
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 76dae26c61690e2f0800000000000000
-      internalID: -945590897189409433
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: man-atlas_59
-      rect:
-        serializedVersion: 2
-        x: 137
-        y: 159
-        width: 23
-        height: 33
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7bc1f6342dfd69f20800000000000000
-      internalID: 3429174260456692919
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: man-atlas_60
-      rect:
-        serializedVersion: 2
-        x: 170
-        y: 159
-        width: 19
-        height: 34
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 99b5b60041b486390800000000000000
-      internalID: -7824921803277771879
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: man-atlas_61
-      rect:
-        serializedVersion: 2
-        x: 203
-        y: 159
-        width: 14
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 3965b1425fbe9e840800000000000000
-      internalID: 5253989878409680531
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: man-atlas_62
-      rect:
-        serializedVersion: 2
-        x: 7
-        y: 127
-        width: 17
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 43ffe86e2a46142d0800000000000000
-      internalID: -3296242801442881740
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: man-atlas_63
-      rect:
-        serializedVersion: 2
-        x: 9
-        y: 159
-        width: 13
-        height: 31
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 23c1c6b05dff54660800000000000000
-      internalID: 7369577655746436146
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: man-atlas_64
-      rect:
-        serializedVersion: 2
-        x: 38
-        y: 159
-        width: 18
-        height: 30
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d038a9b7478bf2d90800000000000000
-      internalID: -7120269675420024051
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: man-atlas_65
-      rect:
-        serializedVersion: 2
-        x: 65
-        y: 159
-        width: 24
-        height: 28
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2caf9d75cbf6a49d0800000000000000
-      internalID: -2789294164484162878
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: man-atlas_66
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 159
-        width: 32
-        height: 28
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1146c78c2e4c696f0800000000000000
-      internalID: -678138215567432687
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: man-atlas_67
-      rect:
-        serializedVersion: 2
-        x: 103
-        y: 127
-        width: 17
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f7bb32afc062de7a0800000000000000
-      internalID: -6346374462717052033
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: man-atlas_68
-      rect:
-        serializedVersion: 2
-        x: 9
-        y: 95
-        width: 12
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: aa5d0c582a3ac6630800000000000000
-      internalID: 3921689293956896170
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: man-atlas_69
-      rect:
-        serializedVersion: 2
-        x: 39
-        y: 127
-        width: 19
-        height: 31
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2686b2693ba811cd0800000000000000
-      internalID: -2589135806838118302
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: man-atlas_70
-      rect:
-        serializedVersion: 2
-        x: 42
-        y: 95
-        width: 13
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 155bdad43f496f7c0800000000000000
-      internalID: -4037876243189877423
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: man-atlas_71
-      rect:
-        serializedVersion: 2
-        x: 71
-        y: 127
-        width: 18
-        height: 31
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4595699ca13009640800000000000000
-      internalID: 5084567392887396692
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: man-atlas_72
-      rect:
-        serializedVersion: 2
-        x: 73
-        y: 95
-        width: 12
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 63ea6384994d73a10800000000000000
-      internalID: 1889212323511840310
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: man-atlas_73
-      rect:
-        serializedVersion: 2
-        x: 106
-        y: 98
-        width: 11
-        height: 27
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7cf29aee1b16ddf00800000000000000
-      internalID: 1143177297263144903
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: man-atlas_74
-      rect:
-        serializedVersion: 2
-        x: 141
-        y: 103
-        width: 9
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f82a4d1ec37ba5760800000000000000
-      internalID: 7447466405925266063
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: man-atlas_75
-      rect:
-        serializedVersion: 2
-        x: 174
-        y: 105
-        width: 7
-        height: 14
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a07901e39ca431170800000000000000
-      internalID: 8147938379033515786
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: man-atlas_76
-      rect:
-        serializedVersion: 2
-        x: 9
-        y: 63
-        width: 14
-        height: 31
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e23dde1541931a7a0800000000000000
-      internalID: -6367745638688500946
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: man-atlas_77
-      rect:
-        serializedVersion: 2
-        x: 40
-        y: 63
-        width: 14
-        height: 31
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: de202453151784670800000000000000
-      internalID: 8523186888398471917
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: man-atlas_78
-      rect:
-        serializedVersion: 2
-        x: 148
-        y: 52
-        width: 31
-        height: 13
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e47b6804de4517fd0800000000000000
-      internalID: -2346000552916764850
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: man-atlas_79
-      rect:
-        serializedVersion: 2
-        x: 8
-        y: 31
-        width: 16
-        height: 25
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 09409bc6eb0d48b60800000000000000
-      internalID: 7747546775270524048
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: man-atlas_80
-      rect:
-        serializedVersion: 2
-        x: 8
-        y: 0
-        width: 15
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: cae3a71b062484c10800000000000000
-      internalID: 2037951814447021740
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: man-atlas_81
-      rect:
-        serializedVersion: 2
-        x: 40
-        y: 31
-        width: 16
-        height: 25
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: eb47eabdbd00283f0800000000000000
-      internalID: -900156031237196610
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: man-atlas_82
-      rect:
-        serializedVersion: 2
-        x: 72
-        y: 31
-        width: 16
-        height: 25
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7042251ee85f2d5e0800000000000000
-      internalID: -1886175299900398585
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: man-atlas_83
-      rect:
-        serializedVersion: 2
-        x: 104
-        y: 31
-        width: 16
-        height: 25
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 13c88eb0a676062f0800000000000000
-      internalID: -981671013602784207
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: man-atlas_84
-      rect:
-        serializedVersion: 2
-        x: 34
-        y: 0
-        width: 23
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 34b30ad57bf77c2e0800000000000000
-      internalID: -2105573875245892797
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: man-atlas_85
-      rect:
-        serializedVersion: 2
-        x: 52
-        y: 0
-        width: 9
-        height: 5
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1044f09d0b7dc65a0800000000000000
-      internalID: -6526604605410819071
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: man-atlas_86
-      rect:
-        serializedVersion: 2
-        x: 68
-        y: 0
-        width: 20
-        height: 29
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b09400799b49447c0800000000000000
-      internalID: -4087979036922328821
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: man-atlas_87
-      rect:
-        serializedVersion: 2
-        x: 82
-        y: 0
-        width: 8
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 516551e631ac7ddb0800000000000000
-      internalID: -4767119495748299243
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: man-atlas_88
-      rect:
-        serializedVersion: 2
-        x: 103
-        y: 0
-        width: 17
-        height: 25
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9c9e88a1517c9f270800000000000000
-      internalID: 8284871882978159049
+      spriteID: f7124c6f30d82bf45b846b276304dfc4
+      internalID: 1159394935
       vertices: []
       indices: 
       edges: []
@@ -2338,7 +1405,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 4e87ca2f583b3e742a0aaee204fa5a49
     internalID: 0
     vertices: []
     indices: 
@@ -2346,96 +1413,66 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":32.0,"y":32.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      man-atlas_0: -4089360907860663408
+      Ascending: 4864143259882892624
+      Camera: -8837453857977712563
+      CameraHold: -7698604290260354896
+      CameraHold1: 6540852974356892352
+      Fall: 612584333022184173
+      Fall2: -9040998042446336695
+      Hand1: 4545277677128322478
+      Hand2: 1159394935
+      InDoor: 6777319618591770465
+      InDoor1: 2364229041466748381
+      InDoor2: 6723788128004570800
+      InDoor3: -5206641849999071352
+      InDoor4: 7734155200727595966
+      InDoor5: 6225071591482097537
+      Land: 3906440102328568514
+      Land1: 7628093617738070574
+      Land2: -4619675739541899080
+      Land3: -8317488009685170319
+      Land4: -4751522211511083618
+      Peak: 8598339193272802428
+      Peak1: -260133190465506153
+      Peak2: 5531381530462496939
+      Place1: -5741670938694157288
+      Place2: 5527870461079525447
+      Place3: 8819648486523306248
+      Place4: -8795349640689762782
+      Place5: 1353390050072231992
+      Place6: 6497219130880207090
+      Place7: -8665011833122168842
+      Prejump: 8494213557497082386
+      Prejump1: 7851380292227828672
+      Prejump2: -2766354624595746943
+      Projector1: 1523454832387757658
+      Projector2: -3391950808446984566
+      Projector3: 8935737012944532314
+      Projector4: -6925180110681298810
+      Walk: -3517941364190034517
+      Walk1: 7465589678692588279
+      Walk2: 6791138396400931404
+      Walk3: -5532176400914703507
+      idle: -4089360907860663408
       man-atlas_1: 4809905883469807059
       man-atlas_10: 3438139292663168170
-      man-atlas_11: 8598339193272802428
-      man-atlas_12: -260133190465506153
-      man-atlas_13: 5531381530462496939
       man-atlas_14: -7189658917243852203
       man-atlas_15: 2407503047402038846
       man-atlas_16: 7875445129465549900
-      man-atlas_17: 612584333022184173
-      man-atlas_18: -9040998042446336695
       man-atlas_19: -8139145866331907867
-      man-atlas_2: 8494213557497082386
       man-atlas_20: 7648611814797067787
-      man-atlas_21: 3906440102328568514
-      man-atlas_22: 7628093617738070574
-      man-atlas_23: -4619675739541899080
-      man-atlas_24: -8317488009685170319
-      man-atlas_25: -4751522211511083618
       man-atlas_26: -4249520790410358825
-      man-atlas_27: -5741670938694157288
-      man-atlas_28: 5527870461079525447
-      man-atlas_29: 8819648486523306248
-      man-atlas_3: 7851380292227828672
-      man-atlas_30: -8795349640689762782
-      man-atlas_31: 1353390050072231992
-      man-atlas_32: 6497219130880207090
-      man-atlas_33: -8665011833122168842
-      man-atlas_34: -3517941364190034517
-      man-atlas_35: 7465589678692588279
-      man-atlas_36: 6791138396400931404
-      man-atlas_37: -5532176400914703507
-      man-atlas_38: 6777319618591770465
-      man-atlas_39: 2364229041466748381
-      man-atlas_4: -2766354624595746943
-      man-atlas_40: 6723788128004570800
-      man-atlas_41: -5206641849999071352
-      man-atlas_42: 7734155200727595966
-      man-atlas_43: 6225071591482097537
-      man-atlas_44: -7698604290260354896
-      man-atlas_45: 6540852974356892352
       man-atlas_46: -2901202810693953658
       man-atlas_47: 4649376213149932888
       man-atlas_48: -406959223826075535
       man-atlas_49: -2918125982610211974
       man-atlas_5: -3806995782791658308
-      man-atlas_50: -8837453857977712563
-      man-atlas_51: 4545277677128322478
-      man-atlas_52: 1523454832387757658
-      man-atlas_53: -3391950808446984566
-      man-atlas_54: 8935737012944532314
-      man-atlas_55: -6925180110681298810
-      man-atlas_56: 8326123168300748829
-      man-atlas_57: -4752570163518071565
-      man-atlas_58: -945590897189409433
-      man-atlas_59: 3429174260456692919
       man-atlas_6: -3253079934115249622
-      man-atlas_60: -7824921803277771879
-      man-atlas_61: 5253989878409680531
-      man-atlas_62: -3296242801442881740
-      man-atlas_63: 7369577655746436146
-      man-atlas_64: -7120269675420024051
-      man-atlas_65: -2789294164484162878
-      man-atlas_66: -678138215567432687
-      man-atlas_67: -6346374462717052033
-      man-atlas_68: 3921689293956896170
-      man-atlas_69: -2589135806838118302
-      man-atlas_7: 4864143259882892624
-      man-atlas_70: -4037876243189877423
-      man-atlas_71: 5084567392887396692
-      man-atlas_72: 1889212323511840310
-      man-atlas_73: 1143177297263144903
-      man-atlas_74: 7447466405925266063
-      man-atlas_75: 8147938379033515786
-      man-atlas_76: -6367745638688500946
-      man-atlas_77: 8523186888398471917
-      man-atlas_78: -2346000552916764850
-      man-atlas_79: 7747546775270524048
       man-atlas_8: 6892857884706307962
-      man-atlas_80: 2037951814447021740
-      man-atlas_81: -900156031237196610
-      man-atlas_82: -1886175299900398585
-      man-atlas_83: -981671013602784207
-      man-atlas_84: -2105573875245892797
-      man-atlas_85: -6526604605410819071
-      man-atlas_86: -4087979036922328821
-      man-atlas_87: -4767119495748299243
-      man-atlas_88: 8284871882978159049
       man-atlas_9: -1331627155481553373
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0

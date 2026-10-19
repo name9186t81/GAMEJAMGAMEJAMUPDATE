@@ -4,6 +4,6 @@ namespace Mechanics
 {
     public interface IReactToPicture
     {
-        public void ReactToPicture(Vector2 cameraPos);
+        public void ReactToPicture(Vector2 cameraPos, GameCamera cam);
     }
 }

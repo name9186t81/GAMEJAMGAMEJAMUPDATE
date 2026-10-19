@@ -9,6 +9,7 @@ namespace Mechanics
         public event Action<Vector2> OnPictureTaken;
         public event Action<DamageArgs> OnDeath;
         public event Action<Player> OnPlayerRegistry;
+        public event Action<Vector2> OnPlayerPhoto;
         private Player _player;
 
         public void RegisterPlayer(Player player)
@@ -16,8 +17,14 @@ namespace Mechanics
             _player = player;
             player.OnPictureTaken += ReadPictureEvent;
             player.OnDeath += PlayerDeath;
+            player.Camera.OnPictureTaken += PhotoTaken;
 
             OnPlayerRegistry?.Invoke(player);
+        }
+
+        private void PhotoTaken(Vector2 obj)
+        {
+            OnPlayerPhoto?.Invoke(obj);
         }
 
         private void PlayerDeath(DamageArgs obj)

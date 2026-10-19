@@ -9,6 +9,7 @@ namespace IK
         [SerializeField] private Transform _startTransform;
         [SerializeField] private Transform _endTransform;
         [SerializeField] private Sprite _sprite;
+        [SerializeField] private Material _mat;
         [SerializeField] private float _distanceFactor = 1;
         [SerializeField] private float _forcedDistance = -1;
         [SerializeField] private float _damping = 0.95f;
@@ -178,6 +179,8 @@ namespace IK
                 renderer.sprite = sprite;
                 renderer.sortingOrder = order;
                 renderer.drawMode = SpriteDrawMode.Tiled;
+
+                if (_mat) renderer.material = _mat;
 
                 _renderers[i] = renderer;
             }
