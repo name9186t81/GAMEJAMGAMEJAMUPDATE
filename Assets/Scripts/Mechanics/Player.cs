@@ -1,7 +1,5 @@
-﻿using Architecture;
-using Effects;
+﻿using Effects;
 using Movement;
-using NUnit.Framework.Constraints;
 using System;
 using UnityEngine;
 using Utils;
@@ -66,10 +64,15 @@ namespace Mechanics
 
         [Space]
         [Header("Misc")]
+        [SerializeField] private SpriteRenderer _renderer;
         [SerializeField] private SpriteAnimation _idleAnimation;
         [SerializeField] private SpriteAnimation _walkAnimation;
-        [SerializeField] private SpriteAnimation _jumpAnimation;
+        [SerializeField] private SpriteAnimation _preJumpAnimation;
+        [SerializeField] private SpriteAnimation _ascending;
+        [SerializeField] private SpriteAnimation _jumpPeakAnimation;
+        [SerializeField] private SpriteAnimation _landingAnimation;
         [SerializeField] private SpriteAnimation _fallAnimation;
+        [SerializeField] private SpriteAnimation _cameraAnimation;
         [SerializeField] private SpriteAnimation _placeProjectorAnimation;
         
         [SerializeField] private ProgressBar _bar;
@@ -127,7 +130,7 @@ namespace Mechanics
         {
             if(GroundDetector.TimeSinceGrounded > 0.5f)
             {
-                _landingCooldown = 0.1f;
+                _landingCooldown = 0.5f;
             }
         }
 
@@ -155,6 +158,7 @@ namespace Mechanics
                 _walkDirection -= 1;
             }
 
+            _landingCooldown -= Time.deltaTime;
             bool landed = _landingCooldown > 0f;
             if (landed)
             {
@@ -165,6 +169,7 @@ namespace Mechanics
             {
                 _lastNonZeroWalkDirection = _walkDirection;
             }
+            _renderer.flipX = _lastNonZeroWalkDirection < 0;
 
             if (Input.GetKeyDown(KeyCode.Space) && !_isJumping && !_wantCameraCharge && !landed)
             {
@@ -242,6 +247,7 @@ namespace Mechanics
                 _bar.gameObject.SetActive(true);
             }
 
+            const float PROJECTOR_HEIGHT = 2F;
             if (_wantProjector)
             {
                 _walkDirection = 0f;
@@ -252,7 +258,7 @@ namespace Mechanics
                 var ray = Physics2D.Raycast(
                     (Vector2)transform.position + _lastNonZeroWalkDirection * new Vector2(-GroundDetector.GravityDirection.y, GroundDetector.GravityDirection.x) * _projectorPlaceOffset,
                     GroundDetector.GravityDirection,
-                    1f,
+                    PROJECTOR_HEIGHT,
                     _validProjectorMask);
 
                 if (ray && _totalProjectors > 0)
@@ -276,8 +282,8 @@ namespace Mechanics
             {
                 var ray = Physics2D.Raycast(
                     (Vector2)transform.position + _lastNonZeroWalkDirection * new Vector2(-GroundDetector.GravityDirection.y, GroundDetector.GravityDirection.x) * _projectorPlaceOffset, 
-                    GroundDetector.GravityDirection, 
-                    1f, 
+                    GroundDetector.GravityDirection,
+                    PROJECTOR_HEIGHT, 
                     _validProjectorMask);
 
                 if (_projectorElapsed > _projectorPlaceTime && ray && _totalProjectors > 0)
@@ -302,6 +308,7 @@ namespace Mechanics
                     _camera.DisableTrace();
                     _camera.DisableTraceProjection();
                     _projectorPreview.gameObject.SetActive(false);
+                    _bar.gameObject.SetActive(false);
                 }
             }
 
@@ -348,8 +355,6 @@ namespace Mechanics
                 {
                     SwitchState(State.Falling);
                 }
-
-                SwitchState(State.Jumping);
                 return;
             }
             if(GroundDetector.TimeSinceGrounded > 0.1f)
@@ -374,19 +379,27 @@ namespace Mechanics
         {
             if(_state != state)
             {
-                _currentAnimation.Stop();
-                _currentAnimation.Reset();
+                if (_currentAnimation != null)
+                {
+                    _currentAnimation.Stop();
+                    _currentAnimation.Reset();
+                }
 
                 switch (state)
                 {
                     case State.Walking: _currentAnimation = _walkAnimation; break;
-                    case State.Jumping: _currentAnimation = _jumpAnimation; break;
+                    case State.Ascending: _currentAnimation = _ascending; break;
+                    case State.JumpPeak: _currentAnimation = _jumpPeakAnimation; break;
+                    case State.JumpPrepare: _currentAnimation = _preJumpAnimation; break;
+                    case State.TakingPicture: _currentAnimation = _cameraAnimation; break;
+                    case State.Landing: _currentAnimation = _landingAnimation; break;
                     case State.Falling: _currentAnimation = _fallAnimation; break;
                     case State.PlacingProjector: _currentAnimation = _placeProjectorAnimation; break;
                     default: _currentAnimation = _idleAnimation; break;
                 }
 
                 _currentAnimation.Play();
+                _state = state;
             }
         }
 

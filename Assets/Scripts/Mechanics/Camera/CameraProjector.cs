@@ -1,9 +1,14 @@
-﻿using UnityEngine;
+﻿using Effects;
+using UnityEngine;
 
 namespace Mechanics
 {
     public sealed class CameraProjector : MonoBehaviour, IInteractable
     {
+        [SerializeField] private SpriteAnimation _idleAnimation;
+        [SerializeField] private SpriteAnimation _spawnAnimation;
+        [SerializeField] private float _spawnDelay;
+
         private bool _gettingDestroyed;
         private GameObject _target;
 
@@ -17,6 +22,16 @@ namespace Mechanics
             }
         }
 
+        private void Update()
+        {
+            _spawnDelay -= Time.deltaTime;
+
+            if(_spawnDelay < 0f)
+            {
+                _spawnAnimation.Stop();
+                _idleAnimation.Play();
+            }
+        }
         private void Death(Health.DamageArgs obj)
         {
             if (_gettingDestroyed) return;

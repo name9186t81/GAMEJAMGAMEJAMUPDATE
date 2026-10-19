@@ -26,8 +26,8 @@ Transform:
   m_GameObject: {fileID: 2010335602110907516}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
-  m_LocalScale: {x: 0.2674, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 1.039, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8648638091112376348}
@@ -81,7 +81,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: -6925180110681298810, guid: d57b58d1a7b531544b94f3fd1d44febe, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -102,6 +102,8 @@ GameObject:
   - component: {fileID: 8648638091112376348}
   - component: {fileID: 8147104277395744604}
   - component: {fileID: 6739848515090430048}
+  - component: {fileID: 361379060613970235}
+  - component: {fileID: 2643862052005972471}
   m_Layer: 7
   m_Name: Projector
   m_TagString: Untagged
@@ -137,6 +139,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2fd7641343ec4545b7317c5c4ffa192, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Mechanics.CameraProjector
+  _idleAnimation: {fileID: 2643862052005972471}
+  _spawnAnimation: {fileID: 361379060613970235}
+  _spawnDelay: 0.5
 --- !u!61 &6739848515090430048
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -183,3 +188,47 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.31, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &361379060613970235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6605148181855988529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 216c7f71ba0d4a342bc23b9607d89109, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Effects.SpriteAnimation
+  _renderer: {fileID: 5853078546123908626}
+  _sprites:
+  - {fileID: 1523454832387757658, guid: d57b58d1a7b531544b94f3fd1d44febe, type: 3}
+  - {fileID: -3391950808446984566, guid: d57b58d1a7b531544b94f3fd1d44febe, type: 3}
+  - {fileID: 8935737012944532314, guid: d57b58d1a7b531544b94f3fd1d44febe, type: 3}
+  - {fileID: -6925180110681298810, guid: d57b58d1a7b531544b94f3fd1d44febe, type: 3}
+  _timePerSprite: 0.1
+  _playAtTheStart: 1
+  _repeat: 0
+  _startFromRandomIndex: 0
+--- !u!114 &2643862052005972471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6605148181855988529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 216c7f71ba0d4a342bc23b9607d89109, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Effects.SpriteAnimation
+  _renderer: {fileID: 5853078546123908626}
+  _sprites:
+  - {fileID: -2901202810693953658, guid: d57b58d1a7b531544b94f3fd1d44febe, type: 3}
+  - {fileID: 4649376213149932888, guid: d57b58d1a7b531544b94f3fd1d44febe, type: 3}
+  - {fileID: -406959223826075535, guid: d57b58d1a7b531544b94f3fd1d44febe, type: 3}
+  - {fileID: -2918125982610211974, guid: d57b58d1a7b531544b94f3fd1d44febe, type: 3}
+  _timePerSprite: 0.1
+  _playAtTheStart: 0
+  _repeat: 1
+  _startFromRandomIndex: 0

@@ -315,7 +315,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -500,7 +500,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: man-atlas_8
+      name: Ascending2
       rect:
         serializedVersion: 2
         x: 32
@@ -1388,7 +1388,7 @@ TextureImporter:
         width: 2
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1397,6 +1397,28 @@ TextureImporter:
       bones: []
       spriteID: f7124c6f30d82bf45b846b276304dfc4
       internalID: 1159394935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ProjectorPreview
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 36
+        height: 31
+      alignment: 9
+      pivot: {x: 0.43197632, y: 0.007441529}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31c2ab232e41ee741b9d91582fd38c29
+      internalID: 2095206610
       vertices: []
       indices: 
       edges: []
@@ -1418,6 +1440,7 @@ TextureImporter:
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":32.0,"y":32.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       Ascending: 4864143259882892624
+      Ascending2: 6892857884706307962
       Camera: -8837453857977712563
       CameraHold: -7698604290260354896
       CameraHold1: 6540852974356892352
@@ -1453,6 +1476,7 @@ TextureImporter:
       Projector2: -3391950808446984566
       Projector3: 8935737012944532314
       Projector4: -6925180110681298810
+      ProjectorPreview: 2095206610
       Walk: -3517941364190034517
       Walk1: 7465589678692588279
       Walk2: 6791138396400931404
@@ -1472,7 +1496,6 @@ TextureImporter:
       man-atlas_49: -2918125982610211974
       man-atlas_5: -3806995782791658308
       man-atlas_6: -3253079934115249622
-      man-atlas_8: 6892857884706307962
       man-atlas_9: -1331627155481553373
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
