@@ -50,6 +50,7 @@ namespace Effects
             _isPlaying = true;
             _elapsed = 0f;
             _index = _startFromRandomIndex ? Random.Range(0, _sprites.Length - 1) : 0;
+            _renderer.sprite = _sprites[_index];
         }
 
         public void Stop()

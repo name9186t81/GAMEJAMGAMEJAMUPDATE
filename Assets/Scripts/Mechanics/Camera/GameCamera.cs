@@ -43,7 +43,10 @@ namespace Mechanics
         private bool _overrideControl;
         private bool _hasPicture;
         private Transform _grid;
-        private Tilemap _ownTileMap;
+
+        private int _activeTilemaps;
+        private Tilemap[] _ownTileMaps;
+        const int TILE_MAPS = 5;
 
         public event Action<Vector2> OnPictureTaken;
         public event Action<Vector2> OnPicturePreTaken;
@@ -75,15 +78,18 @@ namespace Mechanics
             gridGo.transform.SetParent(transform, false);
             _grid = gridGo.transform;
 
-            var go2 = new GameObject("TILEMAP");
-            go2.layer = 3;
-            _ownTileMap = go2.AddComponent<Tilemap>();
-            var renderer = go2.AddComponent<TilemapRenderer>();
-            renderer.sortingOrder = -1;
+            _ownTileMaps = new Tilemap[TILE_MAPS];
+            for (int i = 0; i < TILE_MAPS; i++)
+            {
+                var go2 = new GameObject("TILEMAP");
+                go2.layer = 3;
+                _ownTileMaps[i] = go2.AddComponent<Tilemap>();
+                var renderer = go2.AddComponent<TilemapRenderer>();
+                renderer.sortingOrder = -1;
 
-            _ownTileMap.color = new Color(1, 1, 1, 0.5f);
-            _ownTileMap.transform.SetParent(gridGo.transform, false);
-
+                _ownTileMaps[i].color = new Color(1, 1, 1, 0.5f);
+                _ownTileMaps[i].transform.SetParent(gridGo.transform, false);
+            }
             var camGo = new GameObject("CAMERACAMERA");
             _renderCamera = camGo.AddComponent<Camera>();
             _renderCamera.enabled = false;
@@ -153,20 +159,23 @@ namespace Mechanics
             gridGo.AddComponent<Grid>().cellSize = Vector3.one;
             gridGo.transform.position = alligned;
 
-            var tileMapGo = new GameObject("TILEMAP_PROJECTION");
-            var tilemap = tileMapGo.AddComponent<Tilemap>();
-            tilemap.color = Color.yellow;
-            tilemap.transform.SetParent(gridGo.transform, false);
+            for (int i = 0; i < _activeTilemaps; i++)
+            {
+                var tileMapGo = new GameObject("TILEMAP_PROJECTION");
+                var tilemap = tileMapGo.AddComponent<Tilemap>();
+                tilemap.color = Color.yellow;
+                tilemap.transform.SetParent(gridGo.transform, false);
 
-            Vector2Int ssize = _pictureSize / 2;
+                Vector2Int ssize = _pictureSize / 2;
 
-            BoundsInt bounds = new BoundsInt(-ssize.x, -ssize.y, 0, _pictureSize.x, _pictureSize.y, 1);
-            TileBase[] tiles = _ownTileMap.GetTilesBlock(bounds);
-            tilemap.SetTilesBlock(bounds, tiles);
-            tilemap.RefreshAllTiles();
+                BoundsInt bounds = new BoundsInt(-ssize.x, -ssize.y, 0, _pictureSize.x, _pictureSize.y, 1);
+                TileBase[] tiles = _ownTileMaps[i].GetTilesBlock(bounds);
+                tilemap.SetTilesBlock(bounds, tiles);
+                tilemap.RefreshAllTiles();
 
-            tilemap.gameObject.AddComponent<TilemapRenderer>().sortingOrder = -6;
-            tilemap.gameObject.AddComponent<TilemapCollider2D>().ProcessTilemapChanges();
+                tilemap.gameObject.AddComponent<TilemapRenderer>().sortingOrder = -6;
+                tilemap.gameObject.AddComponent<TilemapCollider2D>().ProcessTilemapChanges();
+            }
 
             var pictureGo = new GameObject("PICTURE_DISPLAYER");
             pictureGo.transform.SetParent(gridGo.transform, false);
@@ -207,6 +216,7 @@ namespace Mechanics
             _cameraFlash.gameObject.SetActive(true);
             _cameraFlash.transform.position = _flashPos;
             _cameraFlash.intensity = _maxFlashStrength;
+            _activeTilemaps = 0;
 
             OnPicturePreTaken?.Invoke(newPosition);
 
@@ -227,8 +237,9 @@ namespace Mechanics
 
                     TileBase[] tiles = tilemap.GetTilesBlock(bounds);
 
-                    _ownTileMap.SetTilesBlock(new BoundsInt(-ssize.x, -ssize.y, 0, _pictureSize.x, _pictureSize.y, 1), tiles);
-                    _ownTileMap.RefreshAllTiles();
+                    _ownTileMaps[_activeTilemaps].SetTilesBlock(new BoundsInt(-ssize.x, -ssize.y, 0, _pictureSize.x, _pictureSize.y, 1), tiles);
+                    _ownTileMaps[_activeTilemaps].RefreshAllTiles();
+                    _activeTilemaps++;
                 }
             }
 
